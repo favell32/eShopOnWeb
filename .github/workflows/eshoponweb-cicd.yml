@@ -8,7 +8,7 @@ env:
   RESOURCE-GROUP: rg-eshoponweb-westeurope
   LOCATION: westeurope
   TEMPLATE-FILE: infra/webapp.bicep
-  SUBSCRIPTION-ID: 'a460c6d8-5e6c-4399-ac57-ae73e56e5819'
+  SUBSCRIPTION-ID: a460c6d8-5e6c-4399-ac57-ae73e56e5819
   WEBAPP-NAME: devops-webapp-westeurope-56189815
 
 
@@ -28,8 +28,8 @@ jobs:
     #Build/Test/Publish the .net project
     - name: Build with dotnet
       run: dotnet build ./eShopOnWeb.sln --configuration Release
-    #- name: Test with dotnet
-     # run: dotnet test ./eShopOnWeb.sln --configuration Release
+    - name: Test with dotnet
+      run: dotnet test ./eShopOnWeb.sln --configuration Release
     - name: dotnet publish
       run: |
         dotnet publish ./src/Web/Web.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
